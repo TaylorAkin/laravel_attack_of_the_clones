@@ -14,7 +14,7 @@ class Email extends Model
     }
 
     public function receiver(){
-        return $this->hasOne('App\Email_Receivers');
+        return $this->hasMany('App\Email_Receivers');
     }
 
     public function archive(){
@@ -33,6 +33,6 @@ class Email extends Model
         return $this->hasOne('App\Important');
     }
     
-
+    // protected $fillable = ['subject', 'body'];
 
 }
