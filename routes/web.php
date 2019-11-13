@@ -82,7 +82,12 @@ Route::get('/starred/{userid}', function ($userid) {
     foreach($received as $r){
        array_push($emailarr, $r->emails);
     }
-    return $emailarr;
+    return [
+        'data' => $emailarr,
+        'links' => [
+            'self' => 'link-value',
+        ],
+    ];
  
 });
 
