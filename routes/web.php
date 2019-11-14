@@ -36,9 +36,18 @@ Route::get('/user/{id}', function ($id) {
 
 Route::get('/inbox/{userid}', function ($userid) {
     $received = Email_Receivers::all()->where('user_id', $userid);
+    // ->join('emails', 'email_id', '=', 'email.email_id')
+    // ->join('users', 'user_id', '=', 'users.user_id')
+    // ->select('email_receivers.*', 'users.name', 'emails.subject')
+    // ->get();
+
     $emailarr = [];
     foreach($received as $r){
-       array_push($emailarr, $r->emails);
+        // $data = {
+        //     'sendername' = $r->user->name;
+
+        // }
+       array_push($emailarr, $r->emails, $r->user->name);
     }
     return [
         'data' => $emailarr,
