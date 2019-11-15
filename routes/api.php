@@ -71,7 +71,7 @@ Route::middleware('auth:api')->group(function(){
             
         });
         
-        Route::get('/starred/{userid}', function ($userid) {
+        Route::get('/starred/{id}', function ($userid) {
             $received = Starred::all()->where('user_id', $userid);
             $emailarr = [];
             foreach($received as $r){
